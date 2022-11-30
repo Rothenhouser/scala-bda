@@ -21,7 +21,7 @@ class ListsSuite extends munit.FunSuite:
   }
 
   test("one plus one is three (0pts)?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+    assert(1 + 1 == 2) // This assertion fails! Go ahead and fix it.
   }
 
   /**
@@ -57,7 +57,7 @@ class ListsSuite extends munit.FunSuite:
    * when writing tests.
    */
   test("details why one plus one is not three (0pts)") {
-    assertEquals(1 + 1, 3) // Fix me, please!
+    assertEquals(1 + 2, 3) // Fix me, please!
   }
 
   /**
@@ -100,12 +100,36 @@ class ListsSuite extends munit.FunSuite:
    */
   test("sum of a few numbers (10pts)") {
     assert(sum(List(1,2,0)) == 3)
+    assertEquals(
+      sum(List(0,0,0)), 0
+    )
+    assertEquals(
+      sum(List(-1,-1,-1)), -3
+    )
+    assertEquals(
+      sum(List(-1,0,1)), 0
+    )
+    assertEquals(sum(List.empty), 0)
   }
 
   test("max of a few numbers (10pts)") {
+    assert(max(List(1)) == 1)
     assert(max(List(3, 7, 2)) == 7)
+    assertEquals(
+      max(List(0,0,0)), 0
+    )
+    assertEquals(
+      max(List(-1,-3,-2)), -1
+    )
   }
 
+  test("max of empty list throws error") {
+    try
+      max(List.empty)
+      fail("No exception has been thrown")
+    catch
+      case e: IllegalArgumentException => ()
+  }
 
 
   import scala.concurrent.duration.*
