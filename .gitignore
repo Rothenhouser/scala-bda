@@ -2,6 +2,7 @@
 .bloop
 .bsp
 .metals
+.scala-build/
 project/metals.sbt
 
 # vs code
